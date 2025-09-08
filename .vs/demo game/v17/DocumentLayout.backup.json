@@ -7,8 +7,12 @@
       "RelativeMoniker": "D:0:0:{427BA448-70BB-A633-56AF-AA4696A24CCB}|Assembly-CSharp.csproj|solutionrelative:assets\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{427BA448-70BB-A633-56AF-AA4696A24CCB}|Assembly-CSharp.csproj|c:\\users\\xrist\\documents\\unity games\\demo game\\assets\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{427BA448-70BB-A633-56AF-AA4696A24CCB}|Assembly-CSharp.csproj|C:\\Users\\xrist\\Documents\\Unity games\\demo game\\assets\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{427BA448-70BB-A633-56AF-AA4696A24CCB}|Assembly-CSharp.csproj|solutionrelative:assets\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{427BA448-70BB-A633-56AF-AA4696A24CCB}|Assembly-CSharp.csproj|c:\\users\\xrist\\documents\\unity games\\demo game\\assets\\slug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{427BA448-70BB-A633-56AF-AA4696A24CCB}|Assembly-CSharp.csproj|solutionrelative:assets\\slug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Slug.cs",
+              "DocumentMoniker": "C:\\Users\\xrist\\Documents\\Unity games\\demo game\\Assets\\Slug.cs",
+              "RelativeDocumentMoniker": "Assets\\Slug.cs",
+              "ToolTip": "C:\\Users\\xrist\\Documents\\Unity games\\demo game\\Assets\\Slug.cs",
+              "RelativeToolTip": "Assets\\Slug.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T21:45:20.299Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -28,7 +45,7 @@
               "RelativeDocumentMoniker": "Assets\\Enemy.cs",
               "ToolTip": "C:\\Users\\xrist\\Documents\\Unity games\\demo game\\Assets\\Enemy.cs",
               "RelativeToolTip": "Assets\\Enemy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-06T21:35:16.888Z",
               "EditorCaption": ""
@@ -41,7 +58,7 @@
               "RelativeDocumentMoniker": "Assets\\PlayerMovement.cs",
               "ToolTip": "C:\\Users\\xrist\\Documents\\Unity games\\demo game\\Assets\\PlayerMovement.cs",
               "RelativeToolTip": "Assets\\PlayerMovement.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwCUAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-06T21:04:36.964Z",
               "EditorCaption": ""

@@ -14,8 +14,8 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         //Αλλαγη του slug 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) currentSlugIndex = 1;
-        if (Input.GetKeyDown(KeyCode.Alpha1)) currentSlugIndex = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha1)) currentSlugIndex = 0;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) currentSlugIndex = 1;
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -27,5 +27,8 @@ public class PlayerShooting : MonoBehaviour
         GameObject slug = Instantiate(slugs[currentSlugIndex], firePoint.position, firePoint .rotation);
         Rigidbody rb = slug.GetComponent<Rigidbody>();
         rb.AddForce(firePoint.forward * shootForce, ForceMode.Impulse);
+
+        // Το slug αυτοκαταστρέφεται μετά από 3 δευτερόλεπτα
+        Destroy(slug, 3f);
     }
 }                                                                  

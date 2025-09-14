@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
 public class Slug : MonoBehaviour
 {
     public int damage = 1; // Πόση ζημιά κάνει το slug
@@ -17,8 +15,9 @@ public class Slug : MonoBehaviour
             {
                 enemy.TakeHit(damage); // Στέλνουμε damage στον Enemy
             }
-
-            Destroy(gameObject); // Το slug εξαφανίζεται μετά τη σύγκρουση
         }
+
+        // Το slug εξαφανίζεται μετά τη σύγκρουση
+        Destroy(gameObject);
     }
 }

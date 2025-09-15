@@ -8,25 +8,53 @@ public class PlayerShooting : MonoBehaviour
     public GameObject[] slugs;
     public Transform firePoint; //το σημειο που θα εμφανιζει το slug
     public float shootForce = 20f;
+    public float slugLifetime = 3f;
 
     private int currentSlugIndex = 0; //Ποιο slug ειναι ενεργο 
+    private int CurrentSlugIndex { get { return currentSlugIndex; } }
+
 
     void Update()
     {
         //Αλλαγη του slug 
         if (Input.GetKeyDown(KeyCode.Alpha1)) currentSlugIndex = 0;
         if (Input.GetKeyDown(KeyCode.Alpha2)) currentSlugIndex = 1;
-        
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll > 0f)
+        {
+            currentSlugIndex++;
+            if (currentSlugIndex >= slugs.Length) currentSlugIndex = 0;
+        }
+        else if (scroll < 0f)
+        {
+            currentSlugIndex--;
+            if (currentSlugIndex < 0) currentSlugIndex = slugs.Length - 1;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
     }
     void Shoot()
-    {
+    { 
+        if (slugs == null || slugs.Length == 0) return;
+        if (firePoint == null) return;
+
         GameObject slug = Instantiate(slugs[currentSlugIndex], firePoint.position, firePoint .rotation);
+
+        Collider slugCol = slug.GetComponent<Collider>();
+        Collider playerCol = GetComponent<Collider>();
+        if (slugCol != null && playerCol != null) 
+            Physics.IgnoreCollision(slugCol, playerCol);
+
         Rigidbody rb = slug.GetComponent<Rigidbody>();
-        rb.AddForce(firePoint.forward * shootForce, ForceMode.Impulse);
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.AddForce(firePoint.forward * shootForce, ForceMode.Impulse);
+        }
 
         // Το slug αυτοκαταστρέφεται μετά από 3 δευτερόλεπτα
         Destroy(slug, 3f);

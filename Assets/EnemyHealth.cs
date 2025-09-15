@@ -10,7 +10,10 @@ public class EnemyHealth : MonoBehaviour
     private float currentHealth;
 
     [Header("UI")]
-    public Slider healthSlider; 
+    public Slider healthSlider;
+    public float sliderSpeed = 5f; // ταχυτητα μπαρας
+
+    private float displayedHealth; // η τιμη στην μπαρα 
 
     void Start()
     {
@@ -18,8 +21,16 @@ public class EnemyHealth : MonoBehaviour
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
-            healthSlider.value = currentHealth;
+            displayedHealth = currentHealth;
+            healthSlider.value = displayedHealth;
         }
+    }
+
+    void Update()
+    {
+        if (healthSlider != null) 
+            displayedHealth = Mathf.Lerp(displayedHealth, currentHealth, Time.deltaTime * sliderSpeed);
+            healthSlider.value = displayedHealth;
     }
 
     public void TakeDamage(float amount)

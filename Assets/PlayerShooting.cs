@@ -55,8 +55,5 @@ public class PlayerShooting : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.AddForce(firePoint.forward * shootForce, ForceMode.Impulse);
         }
-
-        // Το slug αυτοκαταστρέφεται μετά από 3 δευτερόλεπτα
-        Destroy(slug, 3f);
     }
 }                                                                  

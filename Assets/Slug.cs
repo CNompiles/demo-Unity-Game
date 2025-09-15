@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Slug : MonoBehaviour
 {
-    public int damage = 1; // Πόση ζημιά κάνει το slug
+    public float damage = 10f; //Ποση ζημια κανει το slug
+    public float lifeTime = 3f; //Ποσα sec να ζει  
+
+    void Start()
+    {
+        Destroy(gameObject, lifeTime);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
+        if (enemy != null)
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.TakeHit(damage); // Στέλνουμε damage στον Enemy
-            }
+            enemy.TakeDamage(damage); // του αφαιρεί ζωή
+            
+            Destroy(gameObject);
         }
-
-        // Το slug εξαφανίζεται μετά τη σύγκρουση
-        Destroy(gameObject);
     }
 }

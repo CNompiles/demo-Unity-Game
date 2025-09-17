@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2601573988245489139}
   - component: {fileID: 5505762771296725165}
   - component: {fileID: 3022956367318913372}
-  - component: {fileID: 3628546780184020404}
+  - component: {fileID: 9076149994246517333}
   m_Layer: 0
   m_Name: IceSlug
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3628546780184020404
+--- !u!114 &9076149994246517333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

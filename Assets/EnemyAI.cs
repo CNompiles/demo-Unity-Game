@@ -7,9 +7,13 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform target; //o Παιτης  
     private NavMeshAgent agent;
+    [HideInInspector] public float defaultSpeed; // η αρχική ταχύτητα
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        defaultSpeed = agent.speed; 
+
     }
 
 
@@ -20,5 +24,10 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(target.position);
         }
        
+    }
+
+    public NavMeshAgent GetAgent()
+    {
+        return agent;
     }
 }

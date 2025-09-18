@@ -7,7 +7,8 @@ public class IceSlug : MonoBehaviour
 {
     public float damage = 5f; // Μικροτερο damage 
     public float slowDuration = 3f; // Διαρκεια cold
-   
+    public float slowFactor = 0.5f; // Πόσο κόβει την ταχύτητα
+
 
     private void Start()
     {
@@ -37,13 +38,14 @@ public class IceSlug : MonoBehaviour
 
     private IEnumerator ApplySlow(EnemyAI ai)
     {
-        NavMeshAgent agent = ai.GetComponent<NavMeshAgent>();
+        NavMeshAgent agent = ai.GetAgent();
         if (agent != null)
         {
-            float originalSpeed = agent.speed;
-            agent.speed = originalSpeed * 0.1f; // 50% speed για slow
+            agent.speed = ai.defaultSpeed * slowFactor; //Μειωνουμε την ταχυτητα 
+
             yield return new WaitForSeconds(slowDuration);
-            agent.speed = originalSpeed;
+
+            agent.speed = ai.defaultSpeed; // επαναφερουμε την ταχυτητα 
         }  
     }
 }

@@ -32,7 +32,7 @@ public class PlayerShooting : MonoBehaviour
             if (currentSlugIndex < 0) currentSlugIndex = slugs.Length - 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             Shoot();
         }

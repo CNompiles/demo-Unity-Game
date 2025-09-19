@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [Header("Health")]
     public float maxHealth = 100f;
     private float currentHealth;
+   
 
     [Header("UI")]
     public Slider healthSlider;
@@ -30,9 +31,11 @@ public class EnemyHealth : MonoBehaviour
 
     void Update()
     {
-        if (healthSlider != null) 
+        if (healthSlider != null)
+        {
             displayedHealth = Mathf.Lerp(displayedHealth, currentHealth, Time.deltaTime * sliderSpeed);
             healthSlider.value = displayedHealth;
+        }
     }
 
     public void TakeDamage(float amount)

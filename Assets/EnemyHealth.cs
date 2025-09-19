@@ -15,6 +15,8 @@ public class EnemyHealth : MonoBehaviour
 
     private float displayedHealth; // η τιμη στην μπαρα 
 
+    public Transform spawnPoint; // spawner
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -47,6 +49,10 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        if (spawnPoint != null && EnemySpawner.Instance != null)
+        {
+            EnemySpawner.Instance.SpawnEnemyAt(spawnPoint);
+        }
         // animation / particles / score 
         Destroy(gameObject);
     }

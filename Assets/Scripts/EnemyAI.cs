@@ -5,23 +5,36 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform target; //o Παιτης  
+    public Transform player; //o Παιτης  
     private NavMeshAgent agent;
     [HideInInspector] public float defaultSpeed; // η αρχική ταχύτητα
+    public float stopDistance = 10f;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        defaultSpeed = agent.speed; 
+        if (player == null)
+        {
+            GameObject p = GameObject.FindGameObjectWithTag("Player");
+            if (p != null) player = p.transform;
+        }
 
     }
-
-
     void Update()
     {
-        if (target != null)
+        if (player == null) return;
+
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        if (distance > stopDistance) 
         {
-            agent.SetDestination(target.position);
+            agent.isStopped = false;
+            agent.SetDestination(player.position);
+        }
+        else
+        {
+            agent.isStopped = true;
+            GetComponent<EnemyShooting>()?.TryShoot(player.position);
         }
        
     }

@@ -4,49 +4,31 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static EnemySpawner Instance;    
+    public GameObject enemyPrefab;      // ο εχθρός prefab
+    public Transform spawnPoint;        // σημείο spawn
+    public float delayBetweenSpawns = 2f; // καθυστέρηση πριν εμφανιστεί ο επόμενος
 
-    [Header("Spawner")]
-    public GameObject enemyPrefab;         
-    public Transform[] spawnPoints;        
-    public float spawnDelay = 5f;
-
-    void Awake()
-    {
-        
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
+    private GameObject currentEnemy;
 
     void Start()
     {
-       
-        foreach (Transform p in spawnPoints)
+        StartCoroutine(SpawnEnemiesOneByOne());
+    }
+
+    IEnumerator SpawnEnemiesOneByOne()
+    {
+        while (true)
         {
-            SpawnImmediate(p);
+            // αν δεν υπάρχει εχθρός στη σκηνή
+            if (currentEnemy == null)
+            {
+                yield return new WaitForSeconds(delayBetweenSpawns);
+
+                // spawn νέου εχθρού
+                currentEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            }
+
+            yield return null; // περιμένει το επόμενο frame
         }
-    }
-
-    
-    public void SpawnEnemyAt(Transform spawnPoint)
-    {
-        StartCoroutine(Respawn(spawnPoint));
-    }
-
-   
-    public GameObject SpawnImmediate(Transform spawnPoint)
-    {
-        GameObject go = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-       
-        EnemyHealth eh = go.GetComponent<EnemyHealth>();
-        if (eh != null)
-            eh.spawnPoint = spawnPoint;
-        return go;
-    }
-
-    private IEnumerator Respawn(Transform spawnPoint)
-    {
-        yield return new WaitForSeconds(spawnDelay);
-        SpawnImmediate(spawnPoint);
     }
 }

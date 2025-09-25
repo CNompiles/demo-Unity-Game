@@ -52,10 +52,6 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        if (spawnPoint != null && EnemySpawner.Instance != null)
-        {
-            EnemySpawner.Instance.SpawnEnemyAt(spawnPoint);
-        }
         // animation / particles / score 
         Destroy(gameObject);
     }

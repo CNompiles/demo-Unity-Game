@@ -18,11 +18,36 @@ public class EnemyShooting : MonoBehaviour
             nextFireTime = Time.time + 1f / fireRate;
         }
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerHealth ph = other.GetComponent<PlayerHealth>();
+            if (ph != null)
+            {
+                ph.TakeDamage(10f);
+            }
+        }
+    }
     void Shoot(Vector3 targetPos)
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         Vector3 dir = (targetPos - firePoint.position).normalized;
         bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
+    }
+
+    public class EnemyBullet : MonoBehaviour
+    {
+        public float damage = 10f;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                PlayerHealth ph = other.GetComponent<PlayerHealth>();
+                if (ph != null) ph.TakeDamage(damage);
+            }
+            Destroy(gameObject);
+        }
     }
 }

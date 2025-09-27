@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;   // Ταχύτητα κίνησης
-    public float gravity = -9.81f; // βαρυτητα
-    public float jumpHeight = 1.5f; // Αλμα 
+    public float gravity = -9.81f; // βαρυτητα 
     private CharacterController controller;
     private Vector3 velocity; 
 
@@ -26,13 +25,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
         velocity.y += gravity * Time.deltaTime;
-
         controller.Move(velocity * Time.deltaTime);
     }
 }

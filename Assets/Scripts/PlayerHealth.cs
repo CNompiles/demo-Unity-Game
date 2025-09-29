@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0f);
-
+        Debug.Log("Player took damage. Current health: " + currentHealth);
         if (healthSlider != null)
             healthSlider.value = currentHealth;
 

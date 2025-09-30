@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float damage = 10f;
+    public float damage = 5f;
     public float lifetime = 2f;
 
     void Start()

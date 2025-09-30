@@ -53,16 +53,15 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player Died!");
-
-        gameObject.SetActive(false);
         StartCoroutine(Respawn());
+        gameObject.SetActive(false);
     }
 
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(respawnDelay);
 
-        // επαναφορά ζωής
+        // επαναφορα ζωης
         currentHealth = maxHealth;
         if (healthSlider != null)
         {
@@ -70,12 +69,14 @@ public class PlayerHealth : MonoBehaviour
             healthSlider.value = displayedHealth;
         }
 
-        // μετακίνηση στο respawn point
+        // μετακινηση στο respawn point
         if (respawnPoint != null)
             transform.position = respawnPoint.position;
 
-        // ενεργοποίηση πάλι του player
-        gameObject.SetActive(true);
+        // Ενεργοποιηση ξανα 
+        GetComponent<PlayerMovement>().enabled = true;
+        GetComponent<PlayerShooting>().enabled = true;
+
         Debug.Log("Player Respawned!");
     }
 }

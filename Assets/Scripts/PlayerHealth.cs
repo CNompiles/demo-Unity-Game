@@ -71,7 +71,9 @@ public class PlayerHealth : MonoBehaviour
 
         // μετακινηση στο respawn point
         if (respawnPoint != null)
+        { 
             transform.position = respawnPoint.position;
+        }
 
         // Ενεργοποιηση ξανα 
         GetComponent<PlayerMovement>().enabled = true;

@@ -555,12 +555,11 @@ GameObject:
   - component: {fileID: 6817007247895336293}
   - component: {fileID: 1133826995948465817}
   - component: {fileID: 5380909022331390898}
+  - component: {fileID: 852290827784543725}
   - component: {fileID: 8277115350871733546}
-  - component: {fileID: 1226460746457253444}
   - component: {fileID: 41329489392827630}
   - component: {fileID: 2676226183980766926}
   - component: {fileID: 7811124298106656711}
-  - component: {fileID: 852290827784543725}
   - component: {fileID: 8055459687910744826}
   m_Layer: 0
   m_Name: Enemy
@@ -658,6 +657,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &852290827784543725
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678027114901309320}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8277115350871733546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -685,19 +707,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1226460746457253444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678027114901309320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4df5286a78ef0e04388bf942aafed133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
 --- !u!195 &41329489392827630
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -751,29 +760,6 @@ MonoBehaviour:
   healthSlider: {fileID: 5585186538979272709}
   sliderSpeed: 5
   spawnPoint: {fileID: 0}
---- !u!136 &852290827784543725
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678027114901309320}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8055459687910744826
 MonoBehaviour:
   m_ObjectHideFlags: 0

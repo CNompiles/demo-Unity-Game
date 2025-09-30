@@ -19,12 +19,13 @@ public class EnemyBullet : MonoBehaviour
             PlayerHealth ph = other.GetComponent<PlayerHealth>();
             if (ph != null)
             {
-                Destroy(gameObject);
+                ph.TakeDamage(damage);
             }
-            else if (!other.isTrigger)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
+        }
+        else if (!other.isTrigger)
+        {
+            Destroy(gameObject);
         }
     }
 }

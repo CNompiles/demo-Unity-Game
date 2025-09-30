@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,9 @@ public class EnemyHealth : MonoBehaviour
     private float displayedHealth; // η τιμη στην μπαρα 
 
     public Transform spawnPoint; // spawner
+
+    // Για ενημερωση spawner
+    public event Action OnDeath;
 
     void Start()
     {
@@ -52,6 +56,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        OnDeath?.Invoke();
         // animation / particles / score 
         Destroy(gameObject);
     }

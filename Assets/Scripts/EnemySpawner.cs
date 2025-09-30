@@ -6,26 +6,35 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;      // ο εχθρός prefab
     public Transform spawnPoint;        // σημείο spawn
-    public float delayBetweenSpawns = 2f; // καθυστέρηση πριν εμφανιστεί ο επόμενος
+    public float respawnDelay = 2f; // καθυστέρηση πριν εμφανιστεί ο επόμενος
 
     private GameObject currentEnemy;
 
     void Start()
     {
-        StartCoroutine(SpawnEnemiesOneByOne());
+        SpawnEnemy();
     }
 
-    IEnumerator SpawnEnemiesOneByOne()
+    void SpawnEnemy()
     {
-        while (true)
-        {
-            if (currentEnemy == null)
-            {
-                yield return new WaitForSeconds(delayBetweenSpawns);
-                currentEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-            }
+        currentEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
 
-            yield return null;
+        // Συνδεση για να ξερει ποτε πεθαινει
+        EnemyHealth health = currentEnemy.GetComponent<EnemyHealth>();
+        if (health != null)
+        {
+            health.OnDeath += HandleEnemyDeath;
         }
+    }
+
+    void HandleEnemyDeath()
+    {
+        StartCoroutine(RespawnAfterDelay());
+    }
+
+    IEnumerator RespawnAfterDelay()
+    {
+        yield return new WaitForSeconds(respawnDelay);
+        SpawnEnemy();
     }
 }

@@ -35,19 +35,4 @@ public class EnemyShooting : MonoBehaviour
         Vector3 dir = (targetPos - firePoint.position).normalized;
         bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
     }
-
-    public class EnemyBullet : MonoBehaviour
-    {
-        public float damage = 10f;
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                PlayerHealth ph = other.GetComponent<PlayerHealth>();
-                if (ph != null) ph.TakeDamage(damage);
-            }
-            Destroy(gameObject);
-        }
-    }
 }

@@ -53,8 +53,10 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player Died!");
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<PlayerShooting>().enabled = false;
+
         StartCoroutine(Respawn());
-        gameObject.SetActive(false);
     }
 
     IEnumerator Respawn()
